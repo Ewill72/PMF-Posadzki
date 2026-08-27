@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>PMF Posadzki | Posadzki Betonowe i Przemysłowe – Chorula, Opole</title>
+<meta name="description" content="PMF Posadzki Piotr Fesser – profesjonalne posadzki betonowe zacierane mechanicznie, posadzki przemysłowe, żywiczne i chudziaki. Chorula, Opole i cała Polska." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          graphite: { DEFAULT: "#1a1a1a", deep: "#0e0e0e", steel: "#2e2e2e", line: "#3d3d3d" },
+          accent: { DEFAULT: "#ff6b00", dark: "#cc5500", light: "#ff8a33" },
+          concrete: { DEFAULT: "#eeece6", dark: "#dcd8cf" },
+        },
+        fontFamily: {
+          display: ["Oswald", "sans-serif"],
+          body: ["Inter", "sans-serif"],
+        },
+      },
+    },
+  };
+</script>
+
+<style>
+  html { scroll-behavior: smooth; }
+  body { background-color: #1a1a1a; color: #eeece6; }
+  ::selection { background-color: #ff6b00; color: #1a1a1a; }
+
+  a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {
+    outline: 2px solid #ff6b00;
+    outline-offset: 3px;
+  }
+
+  /* Scroll reveal */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s cubic-bezier(0.22,1,0.36,1), transform 0.6s cubic-bezier(0.22,1,0.36,1);
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Trowel divider line draw */
+  .trowel-line {
+    stroke-dasharray: 1600;
+    stroke-dashoffset: 1600;
+    transition: stroke-dashoffset 1.1s ease-in-out;
+  }
+  .trowel-line.is-visible {
+    stroke-dashoffset: 0;
+  }
+
+  /* Hero accent bar sweep */
+  .hero-bar {
+    transform: scaleX(0);
+    transform-origin: left;
+    animation: sweepIn 1s cubic-bezier(0.65,0,0.35,1) 0.4s forwards;
+  }
+  @keyframes sweepIn { to { transform: scaleX(1); } }
+
+  .hero-fade {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 0.7s ease forwards;
+  }
+  @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+    .reveal { opacity: 1; transform: none; }
+  }
+</style>
+</head>
+<body class="font-body antialiased">
+
+<!-- HEADER -->
+<header id="site-header" class="fixed top-0 z-50 w-full transition-all duration-300 border-b border-transparent">
+  <div class="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 lg:px-8">
+    <a href="#" class="flex items-center gap-2">
+      <span class="flex h-9 w-9 items-center justify-center bg-accent text-graphite font-display font-bold text-sm">PMF</span>
+      <span class="font-display text-lg uppercase tracking-wide text-white">Posadzki</span>
+    </a>
+
+    <nav class="hidden items-center gap-8 lg:flex">
+      <a href="#o-nas" class="font-display text-sm uppercase tracking-wider text-concrete/80 hover:text-accent transition-colors">O nas</a>
+      <a href="#uslugi" class="font-display text-sm uppercase tracking-wider text-concrete/80 hover:text-accent transition-colors">Usługi</a>
+      <a href="#realizacje" class="font-display text-sm uppercase tracking-wider text-concrete/80 hover:text-accent transition-colors">Realizacje</a>
+      <a href="#kontakt" class="font-display text-sm uppercase tracking-wider text-concrete/80 hover:text-accent transition-colors">Kontakt</a>
+    </nav>
+
+    <div class="flex items-center gap-3">
+      <a href="tel:607963765" class="hidden sm:flex items-center gap-2 border border-accent bg-accent px-4 py-2 font-display text-sm uppercase tracking-wide text-graphite hover:bg-accent-dark hover:border-accent-dark transition-colors">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.5 21 3 13.5 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8Z" stroke="currentColor" stroke-width="1.6"/></svg>
+        607 963 765
+      </a>
+      <button id="menu-toggle" aria-label="Otwórz menu" aria-expanded="false" class="flex h-10 w-10 items-center justify-center border border-graphite-line text-white lg:hidden">
+        <svg id="icon-burger" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2"/></svg>
+        <svg id="icon-close" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true" class="hidden"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <div id="mobile-nav" class="hidden border-t border-graphite-line bg-graphite lg:hidden">
+    <nav class="flex flex-col px-5 py-4">
+      <a href="#o-nas" class="border-b border-graphite-line py-3 font-display text-sm uppercase tracking-wider text-concrete/80">O nas</a>
+      <a href="#uslugi" class="border-b border-graphite-line py-3 font-display text-sm uppercase tracking-wider text-concrete/80">Usługi</a>
+      <a href="#realizacje" class="border-b border-graphite-line py-3 font-display text-sm uppercase tracking-wider text-concrete/80">Realizacje</a>
+      <a href="#kontakt" class="py-3 font-display text-sm uppercase tracking-wider text-concrete/80">Kontakt</a>
+      <a href="tel:607963765" class="mt-4 flex items-center justify-center gap-2 bg-accent px-4 py-3 font-display text-sm uppercase tracking-wide text-graphite">607 963 765</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<!-- HERO -->
+<section class="relative flex min-h-screen items-end overflow-hidden bg-graphite-deep pt-28">
+  <div class="absolute inset-0">
+    <img src="https://images.unsplash.com/photo-1590986033430-a2b6a4b41a4b?q=80&w=2400&auto=format&fit=crop" alt="Posadzka betonowa zacierana mechanicznie" class="absolute inset-0 h-full w-full object-cover object-center opacity-60" />
+    <div class="absolute inset-0 bg-gradient-to-t from-graphite-deep via-graphite-deep/70 to-graphite-deep/20"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-graphite-deep/90 via-graphite-deep/20 to-transparent"></div>
+  </div>
+
+  <div class="hero-bar absolute left-0 top-1/3 h-[3px] w-2/3 bg-accent"></div>
+
+  <div class="relative z-10 mx-auto w-full max-w-7xl px-5 pb-20 pt-16 lg:px-8 lg:pb-28">
+    <p class="hero-fade mb-4 font-display text-sm uppercase tracking-[0.3em] text-accent">Chorula • Opole • Cała Polska</p>
+    <h1 class="hero-fade max-w-3xl font-display text-4xl font-semibold uppercase leading-[1.08] text-white sm:text-5xl lg:text-6xl" style="animation-delay:0.1s">
+      Profesjonalne Posadzki <span class="text-accent">Betonowe i Przemysłowe</span>
+    </h1>
+    <p class="hero-fade mt-6 max-w-xl font-body text-lg text-concrete/90" style="animation-delay:0.2s">
+      Zacierane mechanicznie, żywiczne, chudziaki. Realizujemy posadzki dla hal przemysłowych, magazynów i domów jednorodzinnych — solidnie i terminowo.
+    </p>
+    <div class="hero-fade mt-10 flex flex-col gap-4 sm:flex-row" style="animation-delay:0.3s">
+      <a href="#kontakt" class="bg-accent px-8 py-4 text-center font-display text-sm uppercase tracking-widest text-graphite hover:bg-accent-dark transition-colors">Bezpłatna Wycena</a>
+      <a href="#realizacje" class="border border-white/40 px-8 py-4 text-center font-display text-sm uppercase tracking-widest text-white hover:border-accent hover:text-accent transition-colors">Zobacz Realizacje</a>
+    </div>
+  </div>
+</section>
+
+<!-- USŁUGI -->
+<section id="uslugi" class="bg-graphite py-24 lg:py-32">
+  <div class="mx-auto max-w-7xl px-5 lg:px-8">
+    <div class="reveal">
+      <p class="font-display text-sm uppercase tracking-[0.3em] text-accent">Zakres prac</p>
+      <h2 class="mt-3 max-w-xl font-display text-3xl font-semibold uppercase text-white sm:text-4xl">Usługi Posadzkarskie</h2>
+    </div>
+
+    <div class="mt-14 grid gap-px overflow-hidden border border-graphite-line bg-graphite-line sm:grid-cols-2 lg:grid-cols-4">
+      <div class="reveal group h-full bg-graphite p-8 hover:bg-graphite-deep transition-colors">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" class="text-accent" aria-hidden="true"><path d="M4 18l4-4 3 3 9-9M20 8V4h-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <h3 class="mt-6 font-display text-lg uppercase tracking-wide text-white">Posadzki Zacierane</h3>
+        <p class="mt-3 font-body text-sm leading-relaxed text-concrete/70">Posadzki betonowe zacierane mechanicznie „na ostro" i „na szkliwo" – twarde, pyłoszczelne powierzchnie do hal i garaży.</p>
+      </div>
+      <div class="reveal group h-full bg-graphite p-8 hover:bg-graphite-deep transition-colors" style="transition-delay:0.08s">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" class="text-accent" aria-hidden="true"><path d="M3 20h18M4 20V9l5-3 5 3v11M9 20v-6h4v6M14 20V6l6-2v16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <h3 class="mt-6 font-display text-lg uppercase tracking-wide text-white">Posadzki Przemysłowe</h3>
+        <p class="mt-3 font-body text-sm leading-relaxed text-concrete/70">Posadzki dla hal produkcyjnych i magazynów, wzmacniane utwardzaczem powierzchniowym, dylatowane zgodnie ze sztuką budowlaną.</p>
+      </div>
+      <div class="reveal group h-full bg-graphite p-8 hover:bg-graphite-deep transition-colors" style="transition-delay:0.16s">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" class="text-accent" aria-hidden="true"><path d="M12 3c2 3.5 5 6.8 5 10a5 5 0 1 1-10 0c0-3.2 3-6.5 5-10Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <h3 class="mt-6 font-display text-lg uppercase tracking-wide text-white">Posadzki Żywiczne</h3>
+        <p class="mt-3 font-body text-sm leading-relaxed text-concrete/70">Powłoki i posadzki żywiczne epoksydowe – odporne na chemię, ścieranie i obciążenia, idealne do przemysłu spożywczego.</p>
+      </div>
+      <div class="reveal group h-full bg-graphite p-8 hover:bg-graphite-deep transition-colors" style="transition-delay:0.24s">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" class="text-accent" aria-hidden="true"><path d="M4 21V11l8-6 8 6v10M4 21h16M9 21v-6h6v6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <h3 class="mt-6 font-display text-lg uppercase tracking-wide text-white">Chudziaki i Fundamenty</h3>
+        <p class="mt-3 font-body text-sm leading-relaxed text-concrete/70">Wylewki chudego betonu pod fundamenty i podłoża, przygotowanie i zagęszczanie podbudowy przed betonowaniem.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DIVIDER 1 -->
+<div class="relative h-16 overflow-hidden" aria-hidden="true">
+  <svg viewBox="0 0 1440 64" preserveAspectRatio="none" class="absolute inset-0 h-full w-full">
+    <polygon points="0,0 1440,64 0,64" fill="#eeece6" />
+    <line x1="0" y1="0" x2="1440" y2="64" stroke="#ff6b00" stroke-width="2" class="trowel-line divider-reveal" />
+  </svg>
+</div>
+
+<!-- DLACZEGO MY -->
+<section id="o-nas" class="bg-concrete py-24 text-graphite lg:py-32">
+  <div class="mx-auto max-w-7xl px-5 lg:px-8">
+    <div class="reveal">
+      <p class="font-display text-sm uppercase tracking-[0.3em] text-accent">Dlaczego my</p>
+      <h2 class="mt-3 max-w-xl font-display text-3xl font-semibold uppercase text-graphite sm:text-4xl">Solidny Fundament Współpracy</h2>
+    </div>
+
+    <div class="mt-14 grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+      <div class="reveal border-t-2 border-graphite pt-5">
+        <span class="font-display text-3xl font-semibold text-accent">2017</span>
+        <h3 class="mt-3 font-display text-base uppercase tracking-wide text-graphite">Doświadczenie od 2017</h3>
+        <p class="mt-2 font-body text-sm leading-relaxed text-graphite/70">Wykonujemy posadzki betonowe i przemysłowe od lat, na terenie całej Polski.</p>
+      </div>
+      <div class="reveal border-t-2 border-graphite pt-5" style="transition-delay:0.08s">
+        <span class="font-display text-3xl font-semibold text-accent">100%</span>
+        <h3 class="mt-3 font-display text-base uppercase tracking-wide text-graphite">Własny sprzęt</h3>
+        <p class="mt-2 font-body text-sm leading-relaxed text-graphite/70">Zacieraczki mechaniczne, listwy wibracyjne i laserowe niwelatory — bez podwykonawców.</p>
+      </div>
+      <div class="reveal border-t-2 border-graphite pt-5" style="transition-delay:0.16s">
+        <span class="font-display text-3xl font-semibold text-accent">24/7</span>
+        <h3 class="mt-3 font-display text-base uppercase tracking-wide text-graphite">Terminowość</h3>
+        <p class="mt-2 font-body text-sm leading-relaxed text-graphite/70">Realizujemy harmonogram budowy bez opóźnień, zgodnie z ustalonym terminem.</p>
+      </div>
+      <div class="reveal border-t-2 border-graphite pt-5" style="transition-delay:0.24s">
+        <span class="font-display text-3xl font-semibold text-accent">5 lat</span>
+        <h3 class="mt-3 font-display text-base uppercase tracking-wide text-graphite">Gwarancja jakości</h3>
+        <p class="mt-2 font-body text-sm leading-relaxed text-graphite/70">Każda wylana posadzka objęta jest pisemną gwarancją wykonania.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DIVIDER 2 -->
+<div class="relative h-16 overflow-hidden" aria-hidden="true">
+  <svg viewBox="0 0 1440 64" preserveAspectRatio="none" class="absolute inset-0 h-full w-full">
+    <polygon points="0,64 1440,0 1440,64" fill="#1a1a1a" />
+    <line x1="0" y1="64" x2="1440" y2="0" stroke="#ff6b00" stroke-width="2" class="trowel-line divider-reveal" />
+  </svg>
+</div>
+
+<!-- REALIZACJE -->
+<section id="realizacje" class="bg-graphite py-24 lg:py-32">
+  <div class="mx-auto max-w-7xl px-5 lg:px-8">
+    <div class="reveal">
+      <p class="font-display text-sm uppercase tracking-[0.3em] text-accent">Portfolio</p>
+      <h2 class="mt-3 max-w-xl font-display text-3xl font-semibold uppercase text-white sm:text-4xl">Nasze Realizacje</h2>
+    </div>
+
+    <div class="mt-14 grid grid-cols-1 gap-1 sm:grid-cols-2 lg:grid-cols-3">
+      <div class="reveal group relative aspect-[4/3] overflow-hidden bg-graphite-deep">
+        <img src="https://images.unsplash.com/photo-1541976590-713941681591?q=80&w=1200&auto=format&fit=crop" alt="Hala Magazynowa – Opole" class="h-full w-full object-cover grayscale-[20%] transition-all duration-500 group-hover:scale-105 group-hover:grayscale-0" />
+        <div class="absolute inset-0 bg-gradient-to-t from-graphite-deep/90 via-graphite-deep/10 to-transparent"></div>
+        <div class="absolute bottom-0 left-0 p-5">
+          <p class="font-display text-sm uppercase tracking-wider text-accent">Opole</p>
+          <p class="font-display text-lg uppercase text-white">Hala Magazynowa</p>
+        </div>
+      </div>
+      <div class="reveal group relative aspect-[4/3] overflow-hidden bg-graphite-deep" style="transition-delay:0.06s">
+        <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=1200&auto=format&fit=crop" alt="Posadzka Przemysłowa – Kędzierzyn-Koźle" class="h-full w-full object-cover grayscale-[20%] transition-all duration-500 group-hover:scale-105 group-hover:grayscale-0" />
+        <div class="absolute inset-0 bg-gradient-to-t from-graphite-deep/90 via-graphite-deep/10 to-transparent"></div>
+        <div class="absolute bottom-0 left-0 p-5">
+          <p class="font-display text-sm uppercase tracking-wider text-accent">Kędzierzyn-Koźle</p>
+          <p class="font-display text-lg uppercase text-white">Posadzka Przemysłowa</p>
+        </div>
+      </div>
+      <div class="reveal group relative aspect-[4/3] overflow-hidden bg-graphite-deep" style="transition-delay:0.12s">
+        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200&auto=format&fit=crop" alt="Garaż Wielostanowiskowy – Chorula" class="h-full w-full object-cover grayscale-[20%] transition-all duration-500 group-hover:scale-105 group-hover:grayscale-0" />
+        <div class="absolute inset-0 bg-gradient-to-t from-graphite-deep/90 via-graphite-deep/10 to-transparent"></div>
+        <div class="absolute bottom-0 left-0 p-5">
+          <p class="font-display text-sm uppercase tracking-wider text-accent">Chorula</p>
+          <p class="font-display text-lg uppercase text-white">Garaż Wielostanowiskowy</p>
+        </div>
+      </div>
+      <div class="reveal group relative aspect-[4/3] overflow-hidden bg-graphite-deep" style="transition-delay:0.18s">
+        <img src="https://images.unsplash.com/photo-1489514354504-1653aa90e34e?q=80&w=1200&auto=format&fit=crop" alt="Fundamenty pod Halę – Strzelce Opolskie" class="h-full w-full object-cover grayscale-[20%] transition-all duration-500 group-hover:scale-105 group-hover:grayscale-0" />
+        <div class="absolute inset-0 bg-gradient-to-t from-graphite-deep/90 via-graphite-deep/10 to-transparent"></div>
+        <div class="absolute bottom-0 left-0 p-5">
+          <p class="font-display text-sm uppercase tracking-wider text-accent">Strzelce Opolskie</p>
+          <p class="font-display text-lg uppercase text-white">Fundamenty pod Halę</p>
+        </div>
+      </div>
+      <div class="reveal group relative aspect-[4/3] overflow-hidden bg-graphite-deep" style="transition-delay:0.24s">
+        <img src="https://images.unsplash.com/photo-1517581177682-a085bb7ffb15?q=80&w=1200&auto=format&fit=crop" alt="Posadzka Żywiczna – Krapkowice" class="h-full w-full object-cover grayscale-[20%] transition-all duration-500 group-hover:scale-105 group-hover:grayscale-0" />
+        <div class="absolute inset-0 bg-gradient-to-t from-graphite-deep/90 via-graphite-deep/10 to-transparent"></div>
+        <div class="absolute bottom-0 left-0 p-5">
+          <p class="font-display text-sm uppercase tracking-wider text-accent">Krapkowice</p>
+          <p class="font-display text-lg uppercase text-white">Posadzka Żywiczna</p>
+        </div>
+      </div>
+      <div class="reveal group relative aspect-[4/3] overflow-hidden bg-graphite-deep" style="transition-delay:0.3s">
+        <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=1200&auto=format&fit=crop" alt="Dom Jednorodzinny – Ozimek" class="h-full w-full object-cover grayscale-[20%] transition-all duration-500 group-hover:scale-105 group-hover:grayscale-0" />
+        <div class="absolute inset-0 bg-gradient-to-t from-graphite-deep/90 via-graphite-deep/10 to-transparent"></div>
+        <div class="absolute bottom-0 left-0 p-5">
+          <p class="font-display text-sm uppercase tracking-wider text-accent">Ozimek</p>
+          <p class="font-display text-lg uppercase text-white">Dom Jednorodzinny</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KONTAKT -->
+<section id="kontakt" class="bg-concrete py-24 text-graphite lg:py-32">
+  <div class="mx-auto max-w-7xl px-5 lg:px-8">
+    <div class="reveal">
+      <p class="font-display text-sm uppercase tracking-[0.3em] text-accent">Wycena</p>
+      <h2 class="mt-3 max-w-xl font-display text-3xl font-semibold uppercase text-graphite sm:text-4xl">Zapytaj o Termin</h2>
+    </div>
+
+    <div class="mt-14 grid gap-12 lg:grid-cols-2 lg:gap-16">
+      <div class="reveal">
+        <form id="contact-form" novalidate class="space-y-5">
+          <div>
+            <label for="name" class="font-display text-xs uppercase tracking-widest text-graphite/70">Imię i nazwisko</label>
+            <input id="name" name="name" type="text" placeholder="Jan Kowalski" class="mt-2 w-full border border-graphite/20 bg-white px-4 py-3 font-body text-graphite outline-none focus:border-accent" />
+            <p id="name-error" class="mt-1 hidden text-sm text-accent-dark"></p>
+          </div>
+          <div>
+            <label for="phone" class="font-display text-xs uppercase tracking-widest text-graphite/70">Telefon</label>
+            <input id="phone" name="phone" type="tel" placeholder="607 963 765" class="mt-2 w-full border border-graphite/20 bg-white px-4 py-3 font-body text-graphite outline-none focus:border-accent" />
+            <p id="phone-error" class="mt-1 hidden text-sm text-accent-dark"></p>
+          </div>
+          <div>
+            <label for="message" class="font-display text-xs uppercase tracking-widest text-graphite/70">Wiadomość</label>
+            <textarea id="message" name="message" rows="5" placeholder="Opisz metraż i rodzaj posadzki, np. hala 500 m², posadzka zacierana..." class="mt-2 w-full resize-none border border-graphite/20 bg-white px-4 py-3 font-body text-graphite outline-none focus:border-accent"></textarea>
+            <p id="message-error" class="mt-1 hidden text-sm text-accent-dark"></p>
+          </div>
+          <button type="submit" class="w-full bg-graphite px-8 py-4 font-display text-sm uppercase tracking-widest text-white hover:bg-accent hover:text-graphite transition-colors sm:w-auto">Wyślij Zapytanie</button>
+          <p id="form-success" role="status" class="hidden font-body text-sm text-graphite/80">Dziękujemy — wiadomość została przygotowana do wysyłki. Odezwiemy się wkrótce.</p>
+        </form>
+      </div>
+
+      <div class="reveal">
+        <div class="flex h-full flex-col">
+          <div class="aspect-[4/3] w-full border border-graphite/20 grayscale">
+            <iframe title="Mapa – PMF Posadzki, Polna 4, Chorula" src="https://www.google.com/maps?q=Polna+4,+47-316+Chorula,+Polska&output=embed" width="100%" height="100%" style="border:0" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+          <div class="mt-6 space-y-3 border-t-2 border-graphite pt-6 font-body text-sm">
+            <p class="font-display text-lg uppercase tracking-wide text-graphite">PMF Posadzki Piotr Fesser</p>
+            <p class="text-graphite/80">ul. Polna 4, 47-316 Chorula</p>
+            <p class="text-graphite/80">NIP: 1990053644</p>
+            <p><a href="tel:607963765" class="font-medium text-graphite hover:text-accent-dark">tel. 607 963 765</a></p>
+            <p><a href="mailto:[email protected]" class="font-medium text-graphite hover:text-accent-dark">[email protected]</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="border-t border-graphite-line bg-graphite-deep py-10">
+  <div class="mx-auto flex max-w-7xl flex-col items-center gap-4 px-5 text-center lg:flex-row lg:justify-between lg:text-left lg:px-8">
+    <div class="flex items-center gap-2">
+      <span class="flex h-8 w-8 items-center justify-center bg-accent font-display text-xs font-bold text-graphite">PMF</span>
+      <span class="font-display text-sm uppercase tracking-wide text-white">Posadzki Piotr Fesser</span>
+    </div>
+    <p class="font-body text-xs text-concrete/50">ul. Polna 4, 47-316 Chorula · NIP 1990053644</p>
+    <p class="font-body text-xs text-concrete/50" id="footer-year">© 2026 PMF Posadzki. Wszelkie prawa zastrzeżone.</p>
+  </div>
+</footer>
+
+<script>
+  // Sticky header background on scroll
+  const header = document.getElementById('site-header');
+  function onScroll() {
+    if (window.scrollY > 12) {
+      header.classList.add('bg-graphite/95', 'backdrop-blur', 'border-graphite-line', 'shadow-lg', 'shadow-black/30');
+    } else {
+      header.classList.remove('bg-graphite/95', 'backdrop-blur', 'border-graphite-line', 'shadow-lg', 'shadow-black/30');
+    }
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  // Mobile menu toggle
+  const menuToggle = document.getElementById('menu-toggle');
+  const mobileNav = document.getElementById('mobile-nav');
+  const iconBurger = document.getElementById('icon-burger');
+  const iconClose = document.getElementById('icon-close');
+  menuToggle.addEventListener('click', () => {
+    const isOpen = mobileNav.classList.toggle('hidden') === false;
+    menuToggle.setAttribute('aria-expanded', String(isOpen));
+    iconBurger.classList.toggle('hidden', isOpen);
+    iconClose.classList.toggle('hidden', !isOpen);
+  });
+  mobileNav.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => {
+    mobileNav.classList.add('hidden');
+    menuToggle.setAttribute('aria-expanded', 'false');
+    iconBurger.classList.remove('hidden');
+    iconClose.classList.add('hidden');
+  }));
+
+  // Scroll reveal via IntersectionObserver
+  const revealEls = document.querySelectorAll('.reveal, .divider-reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '-40px' });
+  revealEls.forEach((el) => io.observe(el));
+
+  // Contact form validation
+  const form = document.getElementById('contact-form');
+  const successMsg = document.getElementById('form-success');
+
+  function showError(id, message) {
+    const el = document.getElementById(id + '-error');
+    if (message) {
+      el.textContent = message;
+      el.classList.remove('hidden');
+    } else {
+      el.textContent = '';
+      el.classList.add('hidden');
+    }
+  }
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    successMsg.classList.add('hidden');
+
+    const name = form.name.value.trim();
+    const phone = form.phone.value.trim();
+    const message = form.message.value.trim();
+    let valid = true;
+
+    if (name.length < 2) {
+      showError('name', 'Podaj imię i nazwisko (min. 2 znaki).');
+      valid = false;
+    } else {
+      showError('name', '');
+    }
+
+    const phoneDigits = phone.replace(/\D/g, '');
+    if (phoneDigits.length < 9) {
+      showError('phone', 'Podaj poprawny numer telefonu (9 cyfr).');
+      valid = false;
+    } else {
+      showError('phone', '');
+    }
+
+    if (message.length < 10) {
+      showError('message', 'Opisz krótko zakres prac (min. 10 znaków).');
+      valid = false;
+    } else {
+      showError('message', '');
+    }
+
+    if (valid) {
+      // Hier später echter Versand einbinden (z.B. E-Mail-Dienst / API).
+      successMsg.classList.remove('hidden');
+      form.reset();
+    }
+  });
+
+  document.getElementById('footer-year').textContent = '© ' + new Date().getFullYear() + ' PMF Posadzki. Wszelkie prawa zastrzeżone.';
+</script>
+
+</body>
+</html>
